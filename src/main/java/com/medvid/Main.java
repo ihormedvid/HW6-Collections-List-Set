@@ -1,5 +1,7 @@
 package com.medvid;
 
+import com.medvid.Comparator.MyComparator;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -8,14 +10,6 @@ import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
-        multipleOfThree();
-        changeElementOfList();
-        findIdenticalItems();
-        SortOfMyCompare();
-
-    }
-
-    public static void multipleOfThree(){
         ArrayList<Integer> listWithNumbers = new ArrayList<>();
         listWithNumbers.add(3);
         listWithNumbers.add(9);
@@ -25,27 +19,16 @@ public class Main {
         listWithNumbers.add(22);
 
         System.out.println("Before delete: " +listWithNumbers);
-        listWithNumbers.removeIf(n -> (n % 3 == 0));
-        System.out.println("After delete:" +listWithNumbers);
-    }
+        System.out.println("After delete: " + multipleOfThree(listWithNumbers));
 
-    public static void changeElementOfList(){
         List<String> fruitList = new ArrayList<>();
         fruitList.add("Apple");
         fruitList.add("Banana");
         fruitList.add("Orange");
         fruitList.add("Melon");
 
-        if(fruitList.contains("Orange")){
-            fruitList.set(fruitList.indexOf("Orange"), "Grapefruit");
-        } else {
-            System.out.println("Sorry, No such element in array");
-        }
+        System.out.println(changeElementOfList(fruitList));
 
-        System.out.println(fruitList);
-    }
-
-    public static void findIdenticalItems(){
         ArrayList<Integer> listWithElements = new ArrayList<>();
         ArrayList<Integer> listWithElements2 = new ArrayList<>();
 
@@ -65,19 +48,35 @@ public class Main {
 
         System.out.println("First Array: " + listWithElements);
         System.out.println("Second Array: " + listWithElements2);
+        System.out.println("identical elements: " + findIdenticalItems(listWithElements,listWithElements2));
 
-        listWithElements2.retainAll(listWithElements);
-        System.out.println("Matching elements: " + listWithElements2);
-    }
-
-    public static void SortOfMyCompare(){
         Set<Integer> treeList = new TreeSet<>(new MyComparator());
         treeList.add(13);
         treeList.add(1);
         treeList.add(3);
         treeList.add(111);
+        System.out.println("Tree set list " + treeList);
 
-        System.out.println("Tree list: " + treeList);
+    }
 
+    public static ArrayList<Integer> multipleOfThree(ArrayList<Integer> listWithNumbers){
+
+        listWithNumbers.removeIf(n -> (n % 3 == 0));
+        return listWithNumbers;
+    }
+
+    public static List<String> changeElementOfList(List<String> fruitList){
+
+        if(fruitList.contains("Orange")){
+            fruitList.set(fruitList.indexOf("Orange"), "Grapefruit");
+        } else {
+            System.out.println("Sorry, No such element in array");
+        }
+        return fruitList;
+    }
+
+    public static ArrayList<Integer> findIdenticalItems(ArrayList<Integer> listWithElements , ArrayList<Integer> listWithElements2){
+        listWithElements2.retainAll(listWithElements);
+        return listWithElements2;
     }
 }

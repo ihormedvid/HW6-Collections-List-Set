@@ -1,4 +1,4 @@
-package com.medvid.Comparator;
+package com.medvid.comparator;
 
 import java.util.Comparator;
 
